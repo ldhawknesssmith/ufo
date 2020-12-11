@@ -149,6 +149,7 @@ list( APPEND ufo_test_input
   testinput/qc_met_office_buddy_check.yaml
   testinput/qc_met_office_buddy_check_unittests.yaml
   testinput/qc_met_office_buddy_pair_finder.yaml
+  testinput/qc_practical_boundscheck.yaml
   testinput/qc_recursive_splitter.yaml
   testinput/qc_oceancolor_preqc.yaml
   testinput/qc_poisson_disk_thinning.yaml
@@ -1251,6 +1252,13 @@ ecbuild_add_test( TARGET  test_ufo_profileconsistencychecks_bkgqc_modobs_obsfilt
                   ENVIRONMENT OOPS_TRAPFPE=1
                   DEPENDS test_ObsFilters.x
                   TEST_DEPENDS ufo_get_ufo_test_data )
+                  
+ecbuild_add_test( TARGET  test_ufo_qc_gen_practical_boundscheck
+                  COMMAND ${CMAKE_BINARY_DIR}/bin/test_ObsFilters.x
+                  ARGS    "testinput/qc_practical_boundscheck.yaml"
+                  ENVIRONMENT OOPS_TRAPFPE=1
+                  DEPENDS test_ObsFilters.x
+                  TEST_DEPENDS ufo_get_ufo_test_data )                  
 
 # Test UFO ObsFilters (specific)
 
